@@ -16,6 +16,17 @@ credential_patterns = [
     r'[A-Za-z0-9+/]{20,}={0,2}',  # Base64 strings
     r'0x[a-fA-F0-9]+',             # Hex strings
     r'[a-fA-F0-9]{32,}',           # Hashes
+    r'^[a-f0-9]{32}(:.+)?$',                       # MD5 Hash
+    r'^[a-f0-9]{40}(:.+)?$',                       # SHA-1 Hash
+    r'^[a-f0-9]{64}(:.+)?$',                       # SHA-256 Hash
+    r'^[a-f0-9]{128}(:.+)?$',                      # SHA-512 Hash
+    r'^\$2[aby]\$[0-9]{2}\$[./A-Za-z0-9]{53}$',    # bcrypt Hash
+    r'^\$P\$[A-Za-z0-9./]{31}$',                   # PHPass Hash (WordPress, Joomla)
+    r'^\$6\$[A-Za-z0-9./]{1,16}\$[A-Za-z0-9./]{86}$',  # SHA-512 Crypt
+    r'^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$',  # Base64
+    r'AKIA[0-9A-Z]{16}',                           # AWS Access Key ID
+    r'-----BEGIN (?:RSA )?PRIVATE KEY-----',       # Private RSA Key
+]
 ]
 
 def detect_hardcoded_credentials(line):
