@@ -27,7 +27,6 @@ credential_patterns = [
     r'AKIA[0-9A-Z]{16}',                           # AWS Access Key ID
     r'-----BEGIN (?:RSA )?PRIVATE KEY-----',       # Private RSA Key
 ]
-]
 
 def detect_hardcoded_credentials(line):
     for pattern in credential_patterns:
